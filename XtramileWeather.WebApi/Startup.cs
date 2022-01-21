@@ -24,7 +24,7 @@ namespace XtramileWeather.WebApi
             services.AddServices();
             services.AddControllers();
 
-            services.AddHttpClient<OpenWeatherClient>();
+            services.AddHttpClient();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

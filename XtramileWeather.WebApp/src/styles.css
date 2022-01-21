@@ -1,0 +1,13 @@
+@import "../node_modules/mini.css/dist/mini-default.min.css";
+
+.ma-5 {
+  margin: 25px;
+}
+
+.mt-5 {
+  margin-top: 25px;
+}
+
+.pa-1 {
+  padding: 10px;
+}

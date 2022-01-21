@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -9,6 +9,10 @@
     <ProjectReference Include="..\Xtramile.Application\Xtramile.Application.csproj" />
     <ProjectReference Include="..\Xtramile.OpenWeather\Xtramile.OpenWeather.csproj" />
     <ProjectReference Include="..\Xtramile.Persistence\Xtramile.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
   </ItemGroup>
 
 
