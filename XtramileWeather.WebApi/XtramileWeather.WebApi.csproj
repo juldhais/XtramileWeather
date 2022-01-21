@@ -5,5 +5,9 @@
 	<Nullable>disable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Xtramile.OpenWeather\Xtramile.OpenWeather.csproj" />
+  </ItemGroup>
+
 
 </Project>

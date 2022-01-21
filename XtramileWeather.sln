@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32014.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtramileWeather.WebApi", "XtramileWeather.WebApi\XtramileWeather.WebApi.csproj", "{878F2559-FE08-44B2-A58E-044A0590FDF9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.WebApi", "XtramileWeather.WebApi\XtramileWeather.WebApi.csproj", "{878F2559-FE08-44B2-A58E-044A0590FDF9}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{51CF8713-7FF6-4AF7-A123-2EA8051D3EA8}"
 EndProject
@@ -11,15 +11,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{824BCC2C-D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{7F08850F-F61E-46B8-A24F-8031E4CB09D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtramileWeather.Domain", "XtramileWeather.Domain\XtramileWeather.Domain.csproj", "{33BF3583-F232-495C-8225-67E35C179A41}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.Domain", "XtramileWeather.Domain\XtramileWeather.Domain.csproj", "{33BF3583-F232-495C-8225-67E35C179A41}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtramile.Application", "Xtramile.Application\Xtramile.Application.csproj", "{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.Application", "Xtramile.Application\Xtramile.Application.csproj", "{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtramile.Persistence", "Xtramile.Persistence\Xtramile.Persistence.csproj", "{32A69549-1FE7-403B-A9DA-44BF11A1C0A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.Persistence", "Xtramile.Persistence\Xtramile.Persistence.csproj", "{32A69549-1FE7-403B-A9DA-44BF11A1C0A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9C9BF163-5247-4902-B48A-544ADF02A148}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtramile.Test", "Xtramile.Test\Xtramile.Test.csproj", "{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.Test", "Xtramile.Test\Xtramile.Test.csproj", "{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtramile.OpenWeather", "Xtramile.OpenWeather\Xtramile.OpenWeather.csproj", "{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF} = {824BCC2C-DEBC-4A4D-933F-C1F2FD71A8FF}
 		{32A69549-1FE7-403B-A9DA-44BF11A1C0A2} = {7F08850F-F61E-46B8-A24F-8031E4CB09D7}
 		{2E14EDFC-80AC-45C7-AB17-3BDCDEA9EAF8} = {9C9BF163-5247-4902-B48A-544ADF02A148}
+		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0} = {7F08850F-F61E-46B8-A24F-8031E4CB09D7}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D52A0E4E-2258-49B4-BEE7-638ED10F49AF}
