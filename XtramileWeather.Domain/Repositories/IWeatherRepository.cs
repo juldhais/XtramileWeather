@@ -1,9 +1,10 @@
-﻿using XtramileWeather.Domain.Entities;
+﻿using System.Threading.Tasks;
+using XtramileWeather.Domain.Entities;
 
 namespace XtramileWeather.Domain.Repositories
 {
     public interface IWeatherRepository
     {
-        Weather Get(string city);
+        Task<Weather> Get(string city);
     }
 }

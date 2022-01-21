@@ -7,35 +7,36 @@ namespace Xtramile.OpenWeather
         public int Id { get; set; }
         public DateTime DateTime { get; set; }
         public string Name { get; set; }
-        public Coordinates Coordinates { get; set; }
-        public Sys Sys { get; set; }
-        public Main Main { get; set; }
-        public Wind Wind { get; set; }
-        public Clouds Clouds { get; set; }
-        public Weather Weather { get; set; }
-        public Rain Rain { get; set; }
-        public Snow Snow { get; set; }
+        public double Visibility { get; set; }
+        public CoordinatesResponse Coordinates { get; set; }
+        public SysResponse Sys { get; set; }
+        public MainResponse Main { get; set; }
+        public WindResponse Wind { get; set; }
+        public CloudsResponse Clouds { get; set; }
+        public WeatherResponse Weather { get; set; }
+        public RainResponse Rain { get; set; }
+        public SnowResponse Snow { get; set; }
 
         public OpenWeatherResponse()
         {
-            Coordinates = new Coordinates();
-            Sys = new Sys();
-            Main = new Main();
-            Wind = new Wind();
-            Clouds = new Clouds();
-            Weather = new Weather();
-            Rain = new Rain();
-            Snow = new Snow();
+            Coordinates = new CoordinatesResponse();
+            Sys = new SysResponse();
+            Main = new MainResponse();
+            Wind = new WindResponse();
+            Clouds = new CloudsResponse();
+            Weather = new WeatherResponse();
+            Rain = new RainResponse();
+            Snow = new SnowResponse();
         }
     }
 
-    internal class Coordinates
+    internal class CoordinatesResponse
     {
         public double Longitude { get; set; }
         public double Latitude { get; set; }
     }
 
-    internal class Weather
+    internal class WeatherResponse
     {
         public int Id { get; set; }
         public string Main { get; set; }
@@ -43,7 +44,7 @@ namespace Xtramile.OpenWeather
         public string Icon { get; set; }
     }
 
-    internal class Main
+    internal class MainResponse
     {
         public double Temperature { get; set; }
         public double FeelsLike { get; set; }
@@ -55,42 +56,39 @@ namespace Xtramile.OpenWeather
         public double GroundLevel { get; set; }
     }
 
-    internal class Wind
+    internal class WindResponse
     {
         public double Speed { get; set; }
         public double Degree { get; set; }
         public double Gust { get; set; }
     }
 
-    internal class Clouds
+    internal class CloudsResponse
     {
         public double All { get; set; }
     }
 
-    internal class Sys
+    internal class SysResponse
     {
         public int Type { get; set; }
-
         public int ID { get; set; }
-
         public double Message { get; set; }
-
         public string Country { get; set; }
-
         public DateTime Sunrise { get; set; }
-
         public DateTime Sunset { get; set; }
     }
 
-    internal class Rain
+    internal class RainResponse
     {
         public double OneHour { get; set; }
         public double ThreeHour { get; set; }
     }
 
-    internal class Snow
+    internal class SnowResponse
     {
         public double OneHour { get; set; }
         public double ThreeHour { get; set; }
     }
+
+
 }

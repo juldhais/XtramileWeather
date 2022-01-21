@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json.Linq;
-using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 using XtramileWeather.Domain.Entities;
 using XtramileWeather.Domain.Repositories;
 
@@ -23,7 +23,7 @@ namespace Xtramile.OpenWeather
             return $"{baseUrl}/data/2.5/weather?appid={apiKey}&q={query}";
         }
 
-        public async Weather Get(string city)
+        public async Task<Weather> Get(string city)
         {
             var httpResponse = await this.httpClient.GetAsync(GetRequestUrl(city));
 
@@ -33,49 +33,63 @@ namespace Xtramile.OpenWeather
             var jsonObject = JObject.Parse(jsonString);
 
             var response = new OpenWeatherResponse();
-            response.Id = int.Parse(jsonObject.SelectToken("id").ToString());
-            response.DateTime = DateTime.UnixEpoch.AddSeconds(double.Parse(jsonObject.SelectToken("dt").ToString()));
+            response.Id = jsonObject.SelectToken("id").ToInteger();
+            response.DateTime = jsonObject.SelectToken("dt").ToDateTime();
             response.Name = jsonObject.SelectToken("name").ToString();
+            response.Visibility = jsonObject.SelectToken("visibility").ToDouble();
 
             var coordToken = jsonObject.SelectToken("coord");
-            response.Coordinates.Longitude = double.Parse(coordToken.SelectToken("lon").ToString());
-            response.Coordinates.Latitude = double.Parse(coordToken.SelectToken("lat").ToString());
+            response.Coordinates.Longitude = coordToken.SelectToken("lon").ToDouble();
+            response.Coordinates.Latitude = coordToken.SelectToken("lat").ToDouble();
 
             var sysToken = jsonObject.SelectToken("sys");
             response.Sys.Country = sysToken.SelectToken("country").ToString();
-            response.Sys.Sunrise = DateTime.UnixEpoch.AddSeconds(double.Parse(sysToken.SelectToken("sunrise").ToString()));
-            response.Sys.Sunset = DateTime.UnixEpoch.AddSeconds(double.Parse(sysToken.SelectToken("sunset").ToString()));
+            response.Sys.Sunrise = sysToken.SelectToken("sunrise").ToDateTime());
+            response.Sys.Sunset = sysToken.SelectToken("sunset").ToDateTime();
 
             var mainToken = jsonObject.SelectToken("main");
-            response.Main.Temperature = double.Parse(mainToken.SelectToken("temp").ToString());
-            response.Main.TemperatureMin = double.Parse(mainToken.SelectToken("temp_min").ToString());
-            response.Main.TemperatureMax = double.Parse(mainToken.SelectToken("temp_max").ToString());
-            response.Main.Humidity = double.Parse(mainToken.SelectToken("humidity").ToString());
-            response.Main.Pressure = double.Parse(mainToken.SelectToken("pressure").ToString());
-            response.Main.SeaLevel = double.Parse(mainToken.SelectToken("sea_level").ToString());
-            response.Main.GroundLevel = double.Parse(mainToken.SelectToken("ground_level").ToString());
+            response.Main.Temperature = mainToken.SelectToken("temp").ToDouble();
+            response.Main.TemperatureMin = mainToken.SelectToken("temp_min").ToDouble();
+            response.Main.TemperatureMax = mainToken.SelectToken("temp_max").ToDouble();
+            response.Main.Humidity = mainToken.SelectToken("humidity").ToDouble();
+            response.Main.Pressure = mainToken.SelectToken("pressure").ToDouble();
+            response.Main.SeaLevel = mainToken.SelectToken("sea_level").ToDouble();
+            response.Main.GroundLevel = mainToken.SelectToken("ground_level").ToDouble();
 
             var windToken = jsonObject.SelectToken("wind");
-            response.Wind.Speed = double.Parse(windToken.SelectToken("speed").ToString());
-            response.Wind.Degree = double.Parse(windToken.SelectToken("degree").ToString());
-            response.Wind.Gust = double.Parse(windToken.SelectToken("gust").ToString());
+            response.Wind.Speed = windToken.SelectToken("speed").ToDouble();
+            response.Wind.Degree = windToken.SelectToken("degree").ToDouble();
+            response.Wind.Gust = windToken.SelectToken("gust").ToDouble();
 
             var cloudsToken = jsonObject.SelectToken("clouds");
-            response.Clouds.All = double.Parse(cloudsToken.SelectToken("all").ToString());
+            response.Clouds.All = cloudsToken.SelectToken("all").ToDouble();
 
             var weatherToken = jsonObject.SelectToken("weather");
-            response.Weather.Id = int.Parse(weatherToken.SelectToken("id").ToString());
+            response.Weather.Id = weatherToken.SelectToken("id").ToInteger();
             response.Weather.Main = weatherToken.SelectToken("main").ToString();
             response.Weather.Description = weatherToken.SelectToken("description").ToString();
             response.Weather.Icon = weatherToken.SelectToken("icon").ToString();
 
             var rainToken = jsonObject.SelectToken("rain");
-            response.Rain.OneHour = double.Parse(rainToken.SelectToken("1h").ToString());
-            response.Rain.ThreeHour = double.Parse(rainToken.SelectToken("3h").ToString());
+            response.Rain.OneHour = rainToken.SelectToken("1h").ToDouble();
+            response.Rain.ThreeHour = rainToken.SelectToken("3h").ToDouble();
 
             var snowToken = jsonObject.SelectToken("snow");
-            response.Rain.OneHour = double.Parse(snowToken.SelectToken("1h").ToString());
-            response.Rain.ThreeHour = double.Parse(snowToken.SelectToken("3h").ToString());
+            response.Rain.OneHour = snowToken.SelectToken("1h").ToDouble();
+            response.Rain.ThreeHour = snowToken.SelectToken("3h").ToDouble();
+
+            var result = new Weather();
+            result.Location = response.Name;
+            result.Time = response.DateTime;
+            result.Wind = response.Wind.Speed;
+            result.Visibility = response.Visibility;
+            result.SkyConditions = response.Weather.Description;
+            result.TemperatureFahrenheit = response.Main.Temperature;
+            result.DewPoint = response.Clouds.All;
+            result.Humidity = response.Main.Humidity;
+            result.Pressure = response.Main.Pressure;
+
+            return result;
         }
     }
 }

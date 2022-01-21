@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Threading.Tasks;
 using Xtramile.Application.Extensions;
 using Xtramile.Application.Resources;
 using Xtramile.Application.Services.Abstractions;
+using XtramileWeather.Domain.Exceptions;
 using XtramileWeather.Domain.Repositories;
 
 namespace Xtramile.Application.Services
@@ -17,18 +16,29 @@ namespace Xtramile.Application.Services
             this.weatherRepository = weatherRepository;
         }
 
-        // 5441d3fdf371995af5f6b7b987520faf
-
-        public WeatherResource Get(string city)
+        public async Task<WeatherResource> Get(string city)
         {
-            var entity = weatherRepository.Get(city);
+            if (string.IsNullOrEmpty(city))
+                throw new BadRequestException("City cannot be empty.");
+
+            var entity = await weatherRepository.Get(city);
+
+            if (entity == null)
+                throw new BadRequestException("City not found.");
 
             var resource = new WeatherResource();
 
             // map Entity to Resource
             resource.MapFrom(entity);
 
+            resource.TemperatureCelcius = ConvertFahrenheitToCelcius(resource.TemperatureFahrenheit);
+
             return resource;
+        }
+
+        private double ConvertFahrenheitToCelcius(double fahrenheit)
+        {
+            return (fahrenheit - 32) * 5 / 9;
         }
     }
 }
