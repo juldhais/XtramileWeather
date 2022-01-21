@@ -6,12 +6,8 @@ namespace Xtramile.Application.Services.Abstractions
 {
     public interface ICountryService
     {
-        CountryResource Get(Guid id);
+        CountryResource Get(int id);
         List<CountryResource> GetAll();
-        List<CityResource> GetCities(Guid countryId);
-
-        CountryResource Create(CountryResource resource, Guid? createdById);
-        CountryResource Update(CountryResource resource, Guid? updatedById);
-        void Delete(Guid id, Guid? deletedById);
+        List<CityResource> GetCities(int countryId);
     }
 }

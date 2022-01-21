@@ -6,6 +6,6 @@ namespace XtramileWeather.Domain.Repositories
 {
     public interface ICountryRepository : IBaseRepository<Country>
     {
-        List<City> GetCities(Guid countryId);
+        List<City> GetCities(int countryId);
     }
 }

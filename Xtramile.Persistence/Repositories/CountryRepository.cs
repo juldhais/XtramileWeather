@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using Xtramile.Persistence.Context;
 using XtramileWeather.Domain.Entities;
 using XtramileWeather.Domain.Repositories;
 
@@ -9,48 +7,47 @@ namespace Xtramile.Persistence.Repositories
 {
     public class CountryRepository : ICountryRepository
     {
-        private readonly DataContext db;
-
-        public CountryRepository(DataContext db)
+        static List<Country> CountryDataSource = new List<Country>
         {
-            this.db = db;
-        }
+            new Country { Id = 1, Name = "Indonesia" },
+            new Country { Id = 2, Name = "Australia" },
+            new Country { Id = 3, Name = "Japan" },
+        };
 
-        public Country Get(Guid id)
+        static List<City> CityDataSource = new List<City>
         {
-            return db.Country.Find(id);
+            new City { Id = 1, CountryId = 1, Name = "Jakarta" },
+            new City { Id = 2, CountryId = 1, Name = "Bogor" },
+            new City { Id = 3, CountryId = 1, Name = "Semarang" },
+            new City { Id = 4, CountryId = 1, Name = "Yogyakarta" },
+            new City { Id = 5, CountryId = 1, Name = "Surabaya" },
+
+            new City { Id = 6, CountryId = 2, Name = "Sydney" },
+            new City { Id = 7, CountryId = 2, Name = "Melbourne" },
+            new City { Id = 8, CountryId = 2, Name = "Brisbane" },
+            new City { Id = 9, CountryId = 2, Name = "Perth" },
+            new City { Id = 10, CountryId = 2, Name = "Canberra" },
+
+            new City { Id = 11, CountryId = 3, Name = "Tokyo" },
+            new City { Id = 12, CountryId = 3, Name = "Osaka" },
+            new City { Id = 13, CountryId = 3, Name = "Nagoya" },
+            new City { Id = 14, CountryId = 3, Name = "Kyoto" },
+            new City { Id = 15, CountryId = 3, Name = "Kobe" },
+        };
+
+        public Country Get(int id)
+        {
+            return CountryDataSource.FirstOrDefault(x => x.Id == id);
         }
 
         public List<Country> GetAll()
         {
-            return db.Country.ToList();
+            return CountryDataSource;
         }
 
-        public List<City> GetCities(Guid countryId)
+        public List<City> GetCities(int countryId)
         {
-            return db.City
-                .Where(x => x.CountryId == countryId)
-                .ToList();
-        }
-
-        public void Create(Country entity, Guid? createdById)
-        {
-            entity.Id = Guid.NewGuid();
-            entity.DateCreated = DateTime.Now;
-            entity.CreatedById = createdById;
-            db.Country.Add(entity);
-        }
-
-        public void Update(Country entity, Guid? updatedById)
-        {
-            entity.DateUpdated = DateTime.Now;
-            entity.UpdatedById = updatedById;
-        }
-
-        public void Delete(Guid id, Guid? deletedById)
-        {
-            var entity = db.Country.Find(id);
-            db.Country.Remove(entity);
+            return CityDataSource.Where(x => x.CountryId == countryId).ToList();
         }
     }
 }

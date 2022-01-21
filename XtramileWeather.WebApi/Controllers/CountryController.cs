@@ -25,14 +25,14 @@ namespace XtramileWeather.WebApi.Controllers
         }
 
         [HttpGet("{id}")]
-        public ActionResult<CountryResource> Get(Guid id)
+        public ActionResult<CountryResource> Get(int id)
         {
             var result = countryService.Get(id);
             return Ok(result);
         }
 
         [HttpGet("{id}/cities")]
-        public ActionResult<List<CityResource>> GetCities(Guid id)
+        public ActionResult<List<CityResource>> GetCities(int id)
         {
             var result = countryService.GetCities(id);
             return Ok(result);

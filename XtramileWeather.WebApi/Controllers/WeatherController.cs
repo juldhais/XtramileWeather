@@ -10,7 +10,7 @@ using Xtramile.Application.Services.Abstractions;
 namespace XtramileWeather.WebApi.Controllers
 {
     [ApiController]
-    [Route("weatheer")]
+    [Route("weather")]
     public class WeatherController : ControllerBase
     {
         private readonly IWeatherService weatherService;

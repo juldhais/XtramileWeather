@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Hantori.Domain.Exceptions;
+using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using XtramileWeather.Domain.Entities;
@@ -26,13 +27,13 @@ namespace Xtramile.OpenWeather
         public async Task<Weather> Get(string city)
         {
             var httpResponse = await this.httpClient.GetAsync(GetRequestUrl(city));
-
             if (httpResponse == null || !httpResponse.IsSuccessStatusCode) return null;
 
             var jsonString = await httpResponse.Content.ReadAsStringAsync();
             var jsonObject = JObject.Parse(jsonString);
 
             var response = new OpenWeatherResponse();
+            response.Cod = jsonObject.SelectToken("cod").ToInteger();
             response.Id = jsonObject.SelectToken("id").ToInteger();
             response.DateTime = jsonObject.SelectToken("dt").ToDateTime();
             response.Name = jsonObject.SelectToken("name").ToString();
@@ -44,7 +45,7 @@ namespace Xtramile.OpenWeather
 
             var sysToken = jsonObject.SelectToken("sys");
             response.Sys.Country = sysToken.SelectToken("country").ToString();
-            response.Sys.Sunrise = sysToken.SelectToken("sunrise").ToDateTime());
+            response.Sys.Sunrise = sysToken.SelectToken("sunrise").ToDateTime();
             response.Sys.Sunset = sysToken.SelectToken("sunset").ToDateTime();
 
             var mainToken = jsonObject.SelectToken("main");

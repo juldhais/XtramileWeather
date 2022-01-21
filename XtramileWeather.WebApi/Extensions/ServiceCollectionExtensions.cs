@@ -12,16 +12,12 @@ namespace XtramileWeather.WebApi.Extensions
         public static void AddRepositories(this IServiceCollection services)
         {
             services.AddScoped<ICountryRepository, CountryRepository>();
-            services.AddScoped<ICityRepository, CityRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IWeatherRepository, OpenWeatherClient>();
         }
 
         public static void AddServices(this IServiceCollection services)
         {
             services.AddScoped<ICountryService, CountryService>();
-            services.AddScoped<ICityService, CityService>();
-            services.AddScoped<IUserService, UserService>();
             services.AddScoped<IWeatherService, WeatherService>();
         }
     }
