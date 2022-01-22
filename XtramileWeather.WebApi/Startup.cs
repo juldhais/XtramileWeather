@@ -24,6 +24,14 @@ namespace XtramileWeather.WebApi
             services.AddControllers();
 
             services.AddHttpClient();
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("CorsPolicy",
+                    builder => builder.AllowAnyOrigin()
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +43,8 @@ namespace XtramileWeather.WebApi
             }
 
             app.UseFileServer();
+
+            app.UseCors("CorsPolicy");
 
             app.UseHttpsRedirection();
 

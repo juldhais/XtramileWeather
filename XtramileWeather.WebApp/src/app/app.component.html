@@ -5,10 +5,8 @@
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="input-group vertical">
         <label for="country">Select Country</label>
-        <select id="country">
-          <option>Indonesia</option>
-          <option>Australia</option>
-          <option>Japan</option>
+        <select id="country" [(ngModel)]="selectedCountry">
+          <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
         </select>
       </div>
   

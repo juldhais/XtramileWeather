@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { CountryResource } from './resources/country.resource';
+import { CountryService } from './services/country.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'XtramileWeather';
+  title = 'Xtramile Weather';
+  countries: CountryResource[] | undefined = [];
+  selectedCountry = new CountryResource();
+
+  constructor(private countryService: CountryService) { }
+
+  async ngOnInit() {
+    this.countries = await this.countryService.getAll();
+  }
 }
