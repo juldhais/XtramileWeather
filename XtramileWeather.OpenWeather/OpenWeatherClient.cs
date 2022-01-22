@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using XtramileWeather.Domain.Entities;
 using XtramileWeather.Domain.Repositories;
+using XtramileWeather.OpenWeather;
 
 namespace Xtramile.OpenWeather
 {

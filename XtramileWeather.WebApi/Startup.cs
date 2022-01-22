@@ -42,6 +42,8 @@ namespace XtramileWeather.WebApi
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseErrorHandler();
+
             app.UseFileServer();
 
             app.UseCors("CorsPolicy");

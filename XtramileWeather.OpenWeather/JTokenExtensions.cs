@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 
-namespace Xtramile.OpenWeather
+namespace XtramileWeather.OpenWeather
 {
     public static class JTokenExtensions
     {
