@@ -3,7 +3,7 @@ using System.Linq;
 using XtramileWeather.Domain.Entities;
 using XtramileWeather.Domain.Repositories;
 
-namespace Xtramile.Persistence.Repositories
+namespace XtramileWeather.Persistence
 {
     public class CountryRepository : ICountryRepository
     {

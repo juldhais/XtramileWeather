@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Xtramile.Application.Extensions
+namespace XtramileWeather.Application.Extensions
 {
     public static class ObjectMapperExtensions
     {

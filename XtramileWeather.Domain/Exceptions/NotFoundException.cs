@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Hantori.Domain.Exceptions
+namespace XtramileWeather.Domain.Exceptions
 {
     public class NotFoundException : Exception
     {

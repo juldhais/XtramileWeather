@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Xtramile.Application\Xtramile.Application.csproj" />
-    <ProjectReference Include="..\Xtramile.OpenWeather\Xtramile.OpenWeather.csproj" />
-    <ProjectReference Include="..\Xtramile.Persistence\Xtramile.Persistence.csproj" />
+    <ProjectReference Include="..\XtramileWeather.Application\XtramileWeather.Application.csproj" />
+    <ProjectReference Include="..\XtramileWeather.OpenWeather\XtramileWeather.OpenWeather.csproj" />
+    <ProjectReference Include="..\XtramileWeather.Persistence\XtramileWeather.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>

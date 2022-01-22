@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Xtramile.Application.Extensions;
-using Xtramile.Application.Resources;
-using Xtramile.Application.Services.Abstractions;
+using XtramileWeather.Application.Extensions;
+using XtramileWeather.Application.Resources;
+using XtramileWeather.Application.Services.Abstractions;
 using XtramileWeather.Domain.Repositories;
 
-namespace Xtramile.Application.Services
+namespace XtramileWeather.Application.Services
 {
     public class CountryService : ICountryService
     {

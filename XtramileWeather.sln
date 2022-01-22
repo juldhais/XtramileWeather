@@ -13,13 +13,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.Domain", "XtramileWeather.Domain\XtramileWeather.Domain.csproj", "{33BF3583-F232-495C-8225-67E35C179A41}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.Application", "Xtramile.Application\Xtramile.Application.csproj", "{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.Application", "XtramileWeather.Application\XtramileWeather.Application.csproj", "{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.Persistence", "Xtramile.Persistence\Xtramile.Persistence.csproj", "{32A69549-1FE7-403B-A9DA-44BF11A1C0A2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.Persistence", "XtramileWeather.Persistence\XtramileWeather.Persistence.csproj", "{32A69549-1FE7-403B-A9DA-44BF11A1C0A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{9C9BF163-5247-4902-B48A-544ADF02A148}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtramile.OpenWeather", "Xtramile.OpenWeather\Xtramile.OpenWeather.csproj", "{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XtramileWeather.OpenWeather", "XtramileWeather.OpenWeather\XtramileWeather.OpenWeather.csproj", "{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XtramileWeather.Test", "XtramileWeather.Test\XtramileWeather.Test.csproj", "{D649FCEB-DC55-42E0-A775-BA657DE91409}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -47,6 +49,10 @@ Global
 		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D649FCEB-DC55-42E0-A775-BA657DE91409}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D649FCEB-DC55-42E0-A775-BA657DE91409}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D649FCEB-DC55-42E0-A775-BA657DE91409}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D649FCEB-DC55-42E0-A775-BA657DE91409}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{A5F4802C-B1E3-42CC-93B3-72AAAC0511CF} = {824BCC2C-DEBC-4A4D-933F-C1F2FD71A8FF}
 		{32A69549-1FE7-403B-A9DA-44BF11A1C0A2} = {7F08850F-F61E-46B8-A24F-8031E4CB09D7}
 		{6B5B0654-D3B5-445E-B905-70E8A12EF9A0} = {7F08850F-F61E-46B8-A24F-8031E4CB09D7}
+		{D649FCEB-DC55-42E0-A775-BA657DE91409} = {9C9BF163-5247-4902-B48A-544ADF02A148}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D52A0E4E-2258-49B4-BEE7-638ED10F49AF}

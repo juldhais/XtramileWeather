@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
-using Xtramile.Application.Resources;
-using Xtramile.Application.Services.Abstractions;
+using XtramileWeather.Application.Resources;
+using XtramileWeather.Application.Services.Abstractions;
 
 namespace XtramileWeather.WebApi.Controllers
 {

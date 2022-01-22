@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using Xtramile.Application.Resources;
-using Xtramile.Application.Services.Abstractions;
+using XtramileWeather.Application.Resources;
+using XtramileWeather.Application.Services.Abstractions;
 
 namespace XtramileWeather.WebApi.Controllers
 {
@@ -21,9 +17,9 @@ namespace XtramileWeather.WebApi.Controllers
         }
 
         [HttpGet]
-        public ActionResult<WeatherResource> Get(string city)
+        public async Task<ActionResult<WeatherResource>> Get(string city)
         {
-            var result = weatherService.Get(city);
+            var result = await weatherService.Get(city);
             return Ok(result);
         }
     }

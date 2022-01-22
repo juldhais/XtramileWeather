@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Xtramile.Application.Services;
-using Xtramile.Application.Services.Abstractions;
 using Xtramile.OpenWeather;
-using Xtramile.Persistence.Repositories;
+using XtramileWeather.Application.Services;
+using XtramileWeather.Application.Services.Abstractions;
 using XtramileWeather.Domain.Repositories;
+using XtramileWeather.Persistence;
 
 namespace XtramileWeather.WebApi.Extensions
 {

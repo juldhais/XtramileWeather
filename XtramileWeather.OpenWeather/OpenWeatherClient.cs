@@ -1,5 +1,4 @@
-﻿using Hantori.Domain.Exceptions;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using XtramileWeather.Domain.Entities;

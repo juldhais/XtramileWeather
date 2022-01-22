@@ -1,8 +1,8 @@
 ﻿using System;
 
-namespace Xtramile.Application.Resources
+namespace XtramileWeather.Application.Resources
 {
-    public class CityResource
+    public class CountryResource
     {
         public int Id { get; set; }
         public string Name { get; set; }

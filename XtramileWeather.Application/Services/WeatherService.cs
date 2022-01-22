@@ -1,11 +1,11 @@
 ﻿using System.Threading.Tasks;
-using Xtramile.Application.Extensions;
-using Xtramile.Application.Resources;
-using Xtramile.Application.Services.Abstractions;
+using XtramileWeather.Application.Extensions;
+using XtramileWeather.Application.Resources;
+using XtramileWeather.Application.Services.Abstractions;
 using XtramileWeather.Domain.Exceptions;
 using XtramileWeather.Domain.Repositories;
 
-namespace Xtramile.Application.Services
+namespace XtramileWeather.Application.Services
 {
     public class WeatherService : IWeatherService
     {
@@ -24,7 +24,7 @@ namespace Xtramile.Application.Services
             var entity = await weatherRepository.Get(city);
 
             if (entity == null)
-                throw new BadRequestException("City not found.");
+                throw new NotFoundException("City not found.");
 
             var resource = new WeatherResource();
 

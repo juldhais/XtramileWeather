@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using Xtramile.Application.Resources;
+using XtramileWeather.Application.Resources;
 
-namespace Xtramile.Application.Services.Abstractions
+namespace XtramileWeather.Application.Services.Abstractions
 {
     public interface IWeatherService
     {

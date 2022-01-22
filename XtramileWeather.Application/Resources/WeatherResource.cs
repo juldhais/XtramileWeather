@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Xtramile.Application.Resources
+namespace XtramileWeather.Application.Resources
 {
     public class WeatherResource
     {
