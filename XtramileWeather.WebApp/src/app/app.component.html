@@ -5,8 +5,8 @@
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="input-group vertical">
         <label for="country">Select Country</label>
-        <select id="country" [(ngModel)]="selectedCountry">
-          <option *ngFor="let country of countries" [ngValue]="country">{{country.name}}</option>
+        <select id="country" [(ngModel)]="selectedCountry" (change)="countryChange()">
+          <option *ngFor="let country of countries" [ngValue]="country">{{ country.name }}</option>
         </select>
       </div>
   
@@ -17,9 +17,8 @@
     <div class="col-sm-12 col-md-6 col-lg-4">
       <div class="input-group vertical">
         <label for="city">Select City</label>
-        <select id="city">
-          <option>Jakarta</option>
-          <option>Bogor</option>
+        <select id="city" [(ngModel)]="selectedCity" (change)="cityChange()">
+          <option *ngFor="let city of cities" [ngValue]="city">{{ city.name }}</option>
         </select>
       </div>
     </div>
@@ -31,17 +30,62 @@
       <div class="card fluid pa-1">
         <div class="row pa-1">
           <div class="col-sm-6"><strong>Location</strong></div>
-          <div class="col-sm-6">Jakarta</div>
+          <div class="col-sm-6">{{ weather.location }}</div>
         </div>
 
         <div class="row pa-1">
-          <div class="col-sm-6"><strong>Location</strong></div>
-          <div class="col-sm-6">Jakarta</div>
+          <div class="col-sm-6"><strong>Date</strong></div>
+          <div class="col-sm-6">{{ weather.time | date:'fullDate' }}</div>
         </div>
 
         <div class="row pa-1">
-          <div class="col-sm-6"><strong>Location</strong></div>
-          <div class="col-sm-6">Jakarta</div>
+          <div class="col-sm-6"><strong>Time</strong></div>
+          <div class="col-sm-6">{{ weather.time | date:'shortTime' }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Weather</strong></div>
+          <div class="col-sm-6">{{ weather.weatherCondition }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Sky Conditions</strong></div>
+          <div class="col-sm-6">{{ weather.skyConditions }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Temp (K)</strong></div>
+          <div class="col-sm-6">{{ weather.temperatureKelvin | number : '1.2-2' }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Temp (C)</strong></div>
+          <div class="col-sm-6">{{ weather.temperatureCelcius | number : '1.2-2' }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Temp (F)</strong></div>
+          <div class="col-sm-6">{{ weather.temperatureFahrenheit | number : '1.2-2' }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Humidity</strong></div>
+          <div class="col-sm-6">{{ weather.humidity }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Pressure</strong></div>
+          <div class="col-sm-6">{{ weather.pressure }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Wind</strong></div>
+          <div class="col-sm-6">{{ weather.wind }}</div>
+        </div>
+
+        <div class="row pa-1">
+          <div class="col-sm-6"><strong>Dew Point</strong></div>
+          <div class="col-sm-6">{{ weather.dewPoint }}</div>
         </div>
       </div>
     </div>

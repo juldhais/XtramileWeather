@@ -10,7 +10,7 @@ namespace Xtramile.OpenWeather
     {
         // api.openweathermap.org/data/2.5/weather?q=Karawang&appid=5441d3fdf371995af5f6b7b987520faf
         private HttpClient httpClient;
-        private string baseUrl = "api.openweathermap.org";
+        private string baseUrl = "http://api.openweathermap.org";
         private string apiKey = "5441d3fdf371995af5f6b7b987520faf";
 
         public OpenWeatherClient(HttpClient httpClient)
@@ -64,27 +64,37 @@ namespace Xtramile.OpenWeather
             var cloudsToken = jsonObject.SelectToken("clouds");
             response.Clouds.All = cloudsToken.SelectToken("all").ToDouble();
 
-            var weatherToken = jsonObject.SelectToken("weather");
-            response.Weather.Id = weatherToken.SelectToken("id").ToInteger();
-            response.Weather.Main = weatherToken.SelectToken("main").ToString();
-            response.Weather.Description = weatherToken.SelectToken("description").ToString();
-            response.Weather.Icon = weatherToken.SelectToken("icon").ToString();
+            var weatherToken = jsonObject.SelectToken("weather")?.First;
+            if (weatherToken != null)
+            {
+                response.Weather.Id = weatherToken.SelectToken("id").ToInteger();
+                response.Weather.Main = weatherToken.SelectToken("main").ToString();
+                response.Weather.Description = weatherToken.SelectToken("description").ToString();
+                response.Weather.Icon = weatherToken.SelectToken("icon").ToString();
+            }
 
             var rainToken = jsonObject.SelectToken("rain");
-            response.Rain.OneHour = rainToken.SelectToken("1h").ToDouble();
-            response.Rain.ThreeHour = rainToken.SelectToken("3h").ToDouble();
+            if (rainToken != null)
+            {
+                response.Rain.OneHour = rainToken.SelectToken("1h").ToDouble();
+                response.Rain.ThreeHour = rainToken.SelectToken("3h").ToDouble();
+            }
 
             var snowToken = jsonObject.SelectToken("snow");
-            response.Rain.OneHour = snowToken.SelectToken("1h").ToDouble();
-            response.Rain.ThreeHour = snowToken.SelectToken("3h").ToDouble();
+            if (snowToken != null)
+            {
+                response.Rain.OneHour = snowToken.SelectToken("1h").ToDouble();
+                response.Rain.ThreeHour = snowToken.SelectToken("3h").ToDouble();
+            }
 
             var result = new Weather();
             result.Location = response.Name;
             result.Time = response.DateTime;
             result.Wind = response.Wind.Speed;
             result.Visibility = response.Visibility;
+            result.WeatherCondition = response.Weather.Main;
             result.SkyConditions = response.Weather.Description;
-            result.TemperatureFahrenheit = response.Main.Temperature;
+            result.TemperatureKelvin = response.Main.Temperature;
             result.DewPoint = response.Clouds.All;
             result.Humidity = response.Main.Humidity;
             result.Pressure = response.Main.Pressure;

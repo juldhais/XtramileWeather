@@ -19,13 +19,14 @@ namespace XtramileWeather.Test
             weatherRepository.Setup(x => x.Get("Jakarta"))
                .ReturnsAsync(new Weather
                {
-                   TemperatureFahrenheit = 77,
+                   TemperatureKelvin = 298.15,
                });
 
             var service = new WeatherService(weatherRepository.Object);
             var weather = await service.Get("Jakarta");
 
             Assert.Equal(25, weather.TemperatureCelcius);
+            Assert.Equal(77, weather.TemperatureFahrenheit);
         }
 
 

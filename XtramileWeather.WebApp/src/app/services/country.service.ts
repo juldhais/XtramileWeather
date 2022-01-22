@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { CountryResource } from '../resources/country.resource';
 import { CityResource } from '../resources/city.resource';
-import { firstValueFrom, lastValueFrom } from 'rxjs';
+import { lastValueFrom } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
-  baseUrl = "https://localhost:44328/countries";
+  baseUrl = "/countries";
 
   constructor(private http: HttpClient) { }
 
@@ -17,6 +17,6 @@ export class CountryService {
   }
 
   async getCities(countryId: number) {
-    return await this.http.get<CityResource[]>(`${this.baseUrl}/${countryId}/cities`);
+    return lastValueFrom(await this.http.get<CityResource[]>(`${this.baseUrl}/${countryId}/cities`));
   }
 }

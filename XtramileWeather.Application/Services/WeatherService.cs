@@ -31,14 +31,20 @@ namespace XtramileWeather.Application.Services
             // map Entity to Resource
             resource.MapFrom(entity);
 
-            resource.TemperatureCelcius = ConvertFahrenheitToCelcius(resource.TemperatureFahrenheit);
+            resource.TemperatureCelcius = ConvertKelvinToCelcius(resource.TemperatureKelvin);
+            resource.TemperatureFahrenheit = ConvertKelvinToFahrenheit(resource.TemperatureKelvin);
 
             return resource;
         }
 
-        private double ConvertFahrenheitToCelcius(double fahrenheit)
+        private double ConvertKelvinToCelcius(double kelvin)
         {
-            return (fahrenheit - 32) * 5 / 9;
+            return kelvin - 273.15;
+        }
+
+        private double ConvertKelvinToFahrenheit(double kelvin)
+        {
+            return (kelvin - 273.15) * 9 / 5 + 32;
         }
     }
 }
